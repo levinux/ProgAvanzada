@@ -60,7 +60,11 @@ namespace U0_Intro
                         PrintResult(resultado);
                         break;
                     case '3': break;
-                    case '4': break;
+                    case '4':
+                        valores = ReadValues();
+                        resultado = c.Multiplica(valores);
+                        PrintResult(resultado);
+                        break;
                     case '5': Console.WriteLine("Bytes!"); break;
                     default:
                     Console.WriteLine("Opcion {0} no reconocida", opcion); break;

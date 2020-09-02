@@ -27,7 +27,7 @@ namespace U0_Intro
 
         public float Multiplica(List<float> valores)
         {
-            float prod = 0;
+            float prod = 1;
             foreach (var item in valores)
             {
                 prod *= item;
