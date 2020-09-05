@@ -8,9 +8,9 @@ namespace RepasoCsharp
         static void Main(string[] args)
         {
             Console.WriteLine("En Main()");
-            //saluda("Mecatronica");
+            saluda("Mecatronica");
             Console.WriteLine("Otra vez en Main()");
-            //Console.WriteLine("La suma es {0}", suma(5, 8));
+            Console.WriteLine("La suma es {0}", suma(5, 8));
             Console.WriteLine("Factorial de 9 es {0}", factorial(9));
             hacerArreglo();
         }
