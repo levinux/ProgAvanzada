@@ -10,7 +10,7 @@ namespace U1_Herencia
             p.edad = 4;
             p.nombre = "Fido";
             p.guau();
-            p.tipo_cola = "paradita";
+            //p.tipo_cola = "paradita";
             //p.color = "Blanco con cafecito";
 
             Labrador l = new Labrador();
