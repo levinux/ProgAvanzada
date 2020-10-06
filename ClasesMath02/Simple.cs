@@ -64,4 +64,46 @@ namespace ClasesMath02
             return x;
         }
     }
+
+    class Entero : Simple {
+        private int valor = 0;
+        public Entero(int n)
+        {
+            if(n < 0 || n > (int) Math.Pow(2, 32) - 1)
+            {
+                valor = 0;
+            }
+            else
+            {
+                valor = n;
+            }
+        }
+
+        public int value()
+        {
+            return valor;
+        }
+        /*public static Entero operator *(Entero a, Entero b)
+        {
+            // aosidfpaoisdjfpoasjdpofjaposjfaposjdfa
+        }*/
+
+        public static Entero operator *(Entero a, Simple b)
+        {
+            Console.WriteLine("a vale = {0} y b vale = {1}", a.value(), b.value());
+            int x = a.value() * b.value();
+            return new Entero(x);
+        }
+
+        /*public static Entero operator *(Simple a, Entero b)
+        {
+            // aosidfpaoisdjfpoasjdpofjaposjfaposjdfa
+        }
+
+        public static Entero operator *(Simple a, Simple b)
+        {
+            // aosidfpaoisdjfpoasjdpofjaposjfaposjdfa
+        }*/
+    }
+    class NumGrande : Simple {}
 }

@@ -18,6 +18,10 @@ namespace ClasesMath02
             Simple otroNumero = new Simple(Convert.ToInt32(Console.ReadLine()));
             Simple m = unNumero * otroNumero;
             Console.WriteLine("El resultado de la multiplicacion es {0}", m.value());
+
+            Entero u = new Entero(8);
+            u = u * unNumero;
+            Console.WriteLine(u.value());
         }
     }
 }
