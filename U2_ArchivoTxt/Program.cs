@@ -8,6 +8,7 @@ namespace U2_ArchivoTxt
         static void Main(string[] args)
         {
             string archivo = "mocos.txt";
+            //
             using(StreamWriter kk = File.CreateText(archivo)) {
                 kk.WriteLine("come caca");
                 kk.WriteLine("moco seco");
