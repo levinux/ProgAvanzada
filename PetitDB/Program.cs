@@ -23,6 +23,8 @@ namespace PetitDB
                     case 2:
                     case 3:
                     case 4:
+                        EliminarRegistro();
+                        break;
                     case 5:
                         Console.WriteLine("bye bye!");
                         break;
@@ -70,6 +72,39 @@ namespace PetitDB
 
             using(StreamWriter salida = File.AppendText(archivo)) {
                 salida.WriteLine("{0},{1},{2},{3}", nocontrol, nombre, carrera, edad);
+            }
+        }
+
+        static void EliminarRegistro()
+        {
+            string nocontrol;
+            bool huboNuevoArchivo = false;
+            Console.WriteLine("Que # de control quieres eliminar? ");
+            nocontrol = Console.ReadLine();
+
+            using(StreamReader entrada = File.OpenText(archivo)) {
+                string linea = "";
+                while((linea = entrada.ReadLine()) != null) //EOF
+                {
+                    string[] campos = linea.Split(',', 4, StringSplitOptions.None);
+                
+                    if(nocontrol != campos[0])
+                    {
+                        huboNuevoArchivo = true;
+                        using(StreamWriter temp = File.AppendText("temporal.tmp")) {
+                            temp.WriteLine(linea);
+                        }
+                    }
+                }
+            }
+
+            if(huboNuevoArchivo)
+            {
+                // Eliminar registro.db
+                // Renombrar temporal.tmp ==> registro.db
+                // Todos felices
+                File.Delete(archivo);
+                File.Move("temporal.tmp", archivo);
             }
         }
     }
