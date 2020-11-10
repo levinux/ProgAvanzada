@@ -22,6 +22,8 @@ namespace PetitDB
                         break;
                     case 2:
                     case 3:
+                        ModificarRegistro();
+                        break;
                     case 4:
                         EliminarRegistro();
                         break;
@@ -106,6 +108,53 @@ namespace PetitDB
                 File.Delete(archivo);
                 File.Move("temporal.tmp", archivo);
             }
+        }
+
+        static void ModificarRegistro()
+        {
+            string nocontrol;
+            string new_nc;
+            string new_nombre;
+            string new_carrera;
+            string new_edad;
+            string new_linea;
+            Console.WriteLine("Que # de control quieres modificar? ");
+            nocontrol = Console.ReadLine();
+
+            using(StreamReader entrada = File.OpenText(archivo)) {
+                string linea = "";
+                while((linea = entrada.ReadLine()) != null) //EOF
+                {
+                    string[] campos = linea.Split(',', 4, StringSplitOptions.None);
+                
+                    if(nocontrol == campos[0])
+                    {
+                        Console.WriteLine("({0}), Nuevo num. Control: ", campos[0]);
+                        new_nc = Console.ReadLine();
+                        Console.WriteLine("({0}), Nuevo nombre: ", campos[1]);
+                        new_nombre = Console.ReadLine();
+                        Console.WriteLine("({0}), Nueva carrera: ", campos[2]);
+                        new_carrera = Console.ReadLine();
+                        Console.WriteLine("({0}), Nueva edad: ", campos[3]);
+                        new_edad = Console.ReadLine();
+                        new_linea = new_nc + "," + new_nombre + "," + new_carrera + "," + new_edad;
+                    }
+                    else
+                    {
+                        new_linea = linea;
+                    }
+
+                    using(StreamWriter temp = File.AppendText("temporal.tmp")) {
+                        temp.WriteLine(new_linea);
+                    }
+                }
+            }
+
+            // Eliminar registro.db
+            // Renombrar temporal.tmp ==> registro.db
+            // Todos felices
+            File.Delete(archivo);
+            File.Move("temporal.tmp", archivo);
         }
     }
 }
